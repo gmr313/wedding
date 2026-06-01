@@ -268,7 +268,7 @@ function App() {
 
         <footer style={wedStyles.footer}>
           <span style={{ ...wedStyles.script, padding: "0px" }}>Geri + Gerry</span>
-          <span className="label" style={{ color: "var(--ink-soft)", fontSize: 10, margin: "0px", padding: "1px 0px 0px" }}>27 June 2026 · Richmond, London
+          <span className="label" style={{ color: "var(--ink-soft)", fontSize: 10, margin: "0px", padding: "1px 0px 0px", textTransform: "none", letterSpacing: "0.18em" }}>27 June 2026 · Richmond, London
           </span>
         </footer>
       </main>
@@ -353,7 +353,7 @@ const wedStyles = {
   footer: { marginTop: 54, paddingTop: 26, borderTop: "1px solid var(--line-soft)", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 },
   script: { fontFamily: "var(--script)", fontSize: 38, color: "var(--ink)", lineHeight: 1 },
 
-  toast: { position: "fixed", left: "50%", bottom: 26, transform: "translateX(-50%)", maxWidth: 420, width: "calc(100% - 32px)", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 6, padding: "14px 18px", display: "flex", alignItems: "center", gap: 14, boxShadow: "0 12px 40px rgba(22,20,18,.16)", animation: "fadeUp .4s ease both", zIndex: 50 },
+  toast: { position: "fixed", left: 16, right: 16, bottom: 26, maxWidth: 420, margin: "0 auto", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 6, padding: "14px 18px", display: "flex", alignItems: "center", gap: 14, boxShadow: "0 12px 40px rgba(22,20,18,.16)", animation: "fadeUp .4s ease both", zIndex: 50 },
   toastTick: { flex: "0 0 auto", width: 34, height: 34, borderRadius: "50%", background: "var(--ink)", display: "flex", alignItems: "center", justifyContent: "center" },
 
   demoNote: { position: "fixed", top: 0, left: 0, right: 0, padding: "7px 14px", background: "var(--ink)", color: "#efe9df", fontSize: 12.5, fontStyle: "italic", textAlign: "center", letterSpacing: "0.01em", zIndex: 40 }
