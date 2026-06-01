@@ -6,13 +6,14 @@ const HERO_IMAGE = "https://withjoy.com/media/46156b59-2736-58c5-b9f0-ae5c63fe30
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "headline": "Help us capture the day",
-  "bgTone": "ivory",
+  "bgTone": "sage",
   "columns": "three",
   "corners": "soft",
   "showDate": true
 } /*EDITMODE-END*/;
 
 const TONES = {
+  sage: { "--bg": "#c9cea5", "--paper": "#ffffff" },
   ivory: { "--bg": "#faf8f4", "--paper": "#ffffff" },
   pure: { "--bg": "#ffffff", "--paper": "#ffffff" },
   grey: { "--bg": "#f1efea", "--paper": "#ffffff" }
@@ -79,7 +80,7 @@ function Hero({ headline, showDate }) {
   return (
     <header style={wedStyles.hero}>
       {showDate && <div className="label" style={{ color: "var(--ink-soft)", textTransform: "none", letterSpacing: "0.18em" }}></div>}
-      <h1 style={{ ...wedStyles.names, fontSize: "51px" }}>Geri + Gerry</h1>
+      <h1 style={{ ...wedStyles.names, fontSize: "51px", color: "rgb(0, 0, 0)" }}>Geri + Gerry</h1>
       {HERO_IMAGE ?
       <img src={HERO_IMAGE} alt="Geri and Gerry" style={wedStyles.heroPhoto} /> :
       <div style={wedStyles.heroFrame}>
@@ -88,8 +89,8 @@ function Hero({ headline, showDate }) {
             <span style={wedStyles.monoSub}>set HERO_IMAGE in app.jsx</span>
           </div>
         </div>}
-      <h2 style={{ ...wedStyles.headline, fontFamily: "\"Cormorant Garamond\"" }}>{headline}</h2>
-      <p style={wedStyles.intro}>Every snap, every silly video — we want to see the day through your eyes. Share your photos and videos right here, and they’ll come straight to us.
+      <h2 style={{ ...wedStyles.headline, fontFamily: "\"Cormorant Garamond\"", color: "rgb(0, 0, 0)" }}>{headline}</h2>
+      <p style={{ ...wedStyles.intro, color: "rgb(0, 0, 0)" }}>Every snap, every silly video — we want to see the day through your eyes. Share your photos and videos right here, and they’ll come straight to us.
 
 
       </p>
@@ -206,14 +207,14 @@ function App() {
 
         {/* ── Upload card ── */}
         <section style={{ ...wedStyles.card, marginTop: 48 }}>
-          <div className="label" style={{ textAlign: "center", color: "var(--ink-soft)" }}>Share a moment</div>
+          <div className="label" style={{ textAlign: "center", color: "rgb(0, 0, 0)" }}>Share a moment</div>
 
           <div style={wedStyles.pickRow}>
             <button style={wedStyles.pickBtn} onClick={() => camRef.current && camRef.current.click()}>
-              <IconCamera /><span style={wedStyles.pickLabel}>Take a photo<br />or video</span>
+              <IconCamera /><span style={{ ...wedStyles.pickLabel, color: "rgb(0, 0, 0)" }}>Take a photo<br />or video</span>
             </button>
             <button style={wedStyles.pickBtn} onClick={() => libRef.current && libRef.current.click()}>
-              <IconLibrary /><span style={wedStyles.pickLabel}>Choose from<br />your library</span>
+              <IconLibrary /><span style={{ ...wedStyles.pickLabel, color: "rgb(0, 0, 0)" }}>Choose from<br />your library</span>
             </button>
           </div>
 
@@ -221,20 +222,20 @@ function App() {
           <input ref={libRef} type="file" accept="image/*,video/*" multiple onChange={onPick} style={{ display: "none" }} />
 
           <label style={wedStyles.nameWrap}>
-            <span className="label" style={{ fontSize: 10.5, color: "var(--ink-soft)" }}>Your name <span style={{ textTransform: "none", letterSpacing: 0, fontStyle: "italic", fontSize: 13 }}>— optional</span></span>
+            <span className="label" style={{ fontSize: 10.5, color: "rgb(0, 0, 0)" }}>Your name <span style={{ textTransform: "none", letterSpacing: 0, fontStyle: "italic", fontSize: 13 }}>— optional</span></span>
             <input
               value={guest}
               onChange={(e) => setGuest(e.target.value)}
               placeholder="So we know who to thank"
-              style={wedStyles.nameInput} />
+              style={{ ...wedStyles.nameInput, borderTop: "rgb(0, 0, 0)", borderRight: "rgb(0, 0, 0)", borderLeft: "rgb(0, 0, 0)", borderBottomColor: "rgb(0, 0, 0)" }} />
             
           </label>
 
           {ready.length > 0 &&
           <div style={{ animation: "fadeUp .3s ease both" }}>
               <div style={wedStyles.stagingHead}>
-                <span style={wedStyles.stagingCount}>{ready.length} selected</span>
-                <button style={wedStyles.clearBtn} onClick={() => setItems((prev) => prev.filter((x) => x.status === "done" || x.status === "uploading"))} disabled={busy}>Clear</button>
+                <span style={{ ...wedStyles.stagingCount, color: "rgb(0, 0, 0)" }}>{ready.length} selected</span>
+                <button style={{ ...wedStyles.clearBtn, color: "rgb(0, 0, 0)" }} onClick={() => setItems((prev) => prev.filter((x) => x.status === "done" || x.status === "uploading"))} disabled={busy}>Clear</button>
               </div>
               <div style={{ ...wedStyles.grid, gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
                 {items.filter((x) => x.status !== "done").map((it) => <Tile key={it.id} item={it} />)}
@@ -253,8 +254,8 @@ function App() {
 
         {/* ── Live gallery ── */}
         <section style={{ marginTop: 44 }}>
-          <h3 style={{ ...wedStyles.galleryTitle, fontSize: "38px" }}>The gallery</h3>
-          <p style={wedStyles.gallerySub}>
+          <h3 style={{ ...wedStyles.galleryTitle, fontSize: "38px", color: "rgb(0, 0, 0)" }}>The gallery</h3>
+          <p style={{ ...wedStyles.gallerySub, color: "rgb(0, 0, 0)" }}>
             {totalShared === 0 ?
             "No moments shared so far" :
             `${totalShared} ${totalShared === 1 ? "moment" : "moments"} shared so far`}
@@ -267,8 +268,8 @@ function App() {
         </section>
 
         <footer style={wedStyles.footer}>
-          <span style={{ ...wedStyles.script, padding: "0px" }}>Geri + Gerry</span>
-          <span className="label" style={{ color: "var(--ink-soft)", fontSize: 10, margin: "0px", padding: "1px 0px 0px", textTransform: "none", letterSpacing: "0.18em" }}>27 June 2026 · Richmond, London
+          <span style={{ ...wedStyles.script, padding: "0px", color: "rgb(0, 0, 0)" }}>Geri + Gerry</span>
+          <span className="label" style={{ fontSize: 10, margin: "0px", padding: "1px 0px 0px", textTransform: "none", letterSpacing: "0.18em", color: "rgb(0, 0, 0)" }}>27 June 2026 · Richmond, London
           </span>
         </footer>
       </main>
@@ -295,7 +296,7 @@ function App() {
         <TweakText label="Headline" value={t.headline} onChange={(v) => setTweak("headline", v)} />
         <TweakToggle label="Show date" value={t.showDate} onChange={(v) => setTweak("showDate", v)} />
         <TweakSection label="Look" />
-        <TweakRadio label="Background" value={t.bgTone} options={["ivory", "pure", "grey"]} onChange={(v) => setTweak("bgTone", v)} />
+        <TweakRadio label="Background" value={t.bgTone} options={["sage", "ivory", "pure", "grey"]} onChange={(v) => setTweak("bgTone", v)} />
         <TweakRadio label="Corners" value={t.corners} options={["soft", "sharp"]} onChange={(v) => setTweak("corners", v)} />
         <TweakRadio label="Gallery cols" value={t.columns} options={["two", "three"]} onChange={(v) => setTweak("columns", v)} />
       </TweaksPanel>
@@ -325,7 +326,7 @@ const wedStyles = {
 
   card: { background: "var(--paper)", border: "1px solid var(--line-soft)", borderRadius: "var(--radius)", padding: "26px 20px", display: "flex", flexDirection: "column", gap: 18, boxShadow: "0 1px 0 rgba(22,20,18,.02)" },
   pickRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 },
-  pickBtn: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 9, padding: "22px 8px", background: "var(--bg)", border: "1px solid var(--line)", borderRadius: "var(--radius)", color: "var(--ink)", transition: "background .15s, transform .1s" },
+  pickBtn: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 9, padding: "22px 8px", background: "#faf8f4", border: "1px solid var(--line)", borderRadius: "var(--radius)", color: "var(--ink)", transition: "background .15s, transform .1s" },
   pickLabel: { fontSize: 15, lineHeight: 1.2, textAlign: "center", color: "var(--ink)" },
 
   nameWrap: { display: "flex", flexDirection: "column", gap: 7 },
@@ -350,7 +351,7 @@ const wedStyles = {
   galleryTitle: { fontFamily: "var(--script)", fontWeight: 400, fontSize: 46, textAlign: "center", margin: "4px 0 0", color: "var(--ink)" },
   gallerySub: { textAlign: "center", fontStyle: "italic", fontSize: 15, color: "var(--ink-soft)", margin: "2px 0 0" },
 
-  footer: { marginTop: 54, paddingTop: 26, borderTop: "1px solid var(--line-soft)", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 },
+  footer: { marginTop: 54, paddingTop: 26, borderTop: "1px solid var(--ink)", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 },
   script: { fontFamily: "var(--script)", fontSize: 38, color: "var(--ink)", lineHeight: 1 },
 
   toast: { position: "fixed", left: 16, right: 16, bottom: 26, maxWidth: 420, margin: "0 auto", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 6, padding: "14px 18px", display: "flex", alignItems: "center", gap: 14, boxShadow: "0 12px 40px rgba(22,20,18,.16)", animation: "fadeUp .4s ease both", zIndex: 50 },
