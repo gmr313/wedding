@@ -257,8 +257,8 @@ function App() {
           <h3 style={{ ...wedStyles.galleryTitle, fontSize: "38px", color: "rgb(0, 0, 0)" }}>The gallery</h3>
           <p style={{ ...wedStyles.gallerySub, color: "rgb(0, 0, 0)" }}>
             {totalShared === 0 ?
-            "You've shared no moments so far" :
-            `${totalShared} ${totalShared === 1 ? "moment" : "moments"} you've shared so far`}
+            "You’ve shared no moments so far" :
+            `${totalShared} ${totalShared === 1 ? "moment" : "moments"} you’ve shared so far`}
           </p>
           {totalShared > 0 &&
           <div style={{ ...wedStyles.grid, gridTemplateColumns: `repeat(${cols}, 1fr)`, marginTop: 18 }}>
